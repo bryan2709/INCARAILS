@@ -3,6 +3,9 @@
 use App\Models\User;
 
 return [
+    'session_cookie' => [
+        'name' => 'incarail_access_token',
+    ],
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',

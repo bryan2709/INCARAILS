@@ -20,6 +20,7 @@ Route::post('/auth/login', [
     AuthController::class,
     'login',
 ])->middleware('throttle:10,1');
+Route::get('/auth/csrf-cookie', [AuthController::class, 'csrf'])->middleware('throttle:120,1');
 Route::middleware([
     'auth:api',
     'active',
@@ -28,7 +29,7 @@ Route::middleware([
     Route::post('/auth/logout', [
         AuthController::class,
         'logout',
-    ]);
+    ])->withoutMiddleware('active');
     Route::get('/auth/me', [
         AuthController::class,
         'me',

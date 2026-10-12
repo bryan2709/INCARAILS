@@ -106,7 +106,7 @@ Una respuesta 429 respeta `Retry-After` tanto numérico como fecha HTTP, con un 
 
 Los permisos siguen siendo independientes y se leen de la base en cada solicitud. Asignar o reactivar un rol no permite conceder permisos que el actor no tiene. Las mutaciones preservan bajo transacción un usuario activo con los tres permisos de administración completa. Los códigos de sistema no pueden renombrarse ni desactivarse, incluyendo valores booleanos enviados como `0`.
 
-Los tokens personales de Passport tienen una vigencia de 120 minutos. Las rutas API abiertas sin sesión en un navegador también devuelven 401 JSON, incluso sin una cabecera `Accept: application/json`.
+Los tokens personales de Passport tienen una vigencia de 120 minutos. La SPA los recibe mediante una cookie de sesión cifrada `HttpOnly`, con `SameSite=Strict` y `Secure` según HTTPS/configuración; recupera el perfil mediante `/api/auth/me` al recargar. La cookie se adapta al Bearer dentro del servidor para conservar las validaciones de Passport y su revocación. Login y mutaciones autenticadas con cookie verifican CSRF; logout revoca el token e invalida la sesión. El [flujo de cookies](12_autenticacion_cookies.md) documenta contratos y configuración. Las rutas API abiertas sin sesión también devuelven 401 JSON, incluso sin `Accept: application/json`.
 
 ## Comandos de verificación
 

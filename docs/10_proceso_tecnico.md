@@ -69,6 +69,8 @@ También crea el pool `football-data-global`, las referencias `FOOTBALL_TOKEN_A/
 
 Todas las rutas de consulta requieren sesión activa y `football.view`. Las importaciones implícitas requieren además `football.manage`. El ID usado en URLs de fútbol es el `external_id` del proveedor; las FK y los IDs de importación/snapshot son internos de MySQL.
 
+Al iniciar o recargar la SPA, el router espera `GET /api/auth/me` con la cookie de sesión protegida antes de abrir una vista. Un login válido prepara CSRF y entrega el token de Passport mediante cookie `HttpOnly`; las mutaciones verifican el encabezado CSRF. La [documentación de autenticación por cookies](12_autenticacion_cookies.md) detalla recuperación, vencimiento, logout y seguridad.
+
 | Vista SPA | Solicitud a la API | Lectura o trabajo inicial |
 |---|---|---|
 | `/competitions` | `GET /api/competitions` | Lee el catálogo local; puede encolar su primera sincronización. |
@@ -270,7 +272,7 @@ La relación competición–equipo–jugador publicada se recorre como `competit
 | `failed_jobs` | Fallos técnicos de Jobs registrados por Laravel. Un error de negocio de importación puede quedar únicamente en `imports`/tareas. |
 | `job_batches` | Infraestructura Laravel para lotes; las importaciones actuales usan Jobs individuales. |
 | `cache`, `cache_locks` | Caché y locks del framework; la señal de `queue:restart` utiliza su caché. |
-| `sessions`, `password_reset_tokens` | Infraestructura de sesión y recuperación de contraseña; la API de la SPA se autentica con Passport. |
+| `sessions`, `password_reset_tokens` | Sesión auxiliar/CSRF y recuperación de contraseña. El JWT de la SPA permanece en una cookie protegida y Passport valida su registro OAuth. |
 | `oauth_clients`, `oauth_access_tokens`, `oauth_refresh_tokens`, `oauth_auth_codes`, `oauth_device_codes` | Infraestructura OAuth; login crea tokens personales y logout los revoca. |
 | `migrations` | Historial del esquema y sus lotes. |
 

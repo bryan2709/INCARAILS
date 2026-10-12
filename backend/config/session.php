@@ -3,7 +3,7 @@
 return [
     'driver' => env('SESSION_DRIVER', 'database'),
     'lifetime' => 120,
-    'expire_on_close' => false,
+    'expire_on_close' => true,
     'encrypt' => false,
     'files' => storage_path('framework/sessions'),
     'connection' => null,
@@ -16,7 +16,7 @@ return [
     'cookie' => 'incarail_session',
     'path' => '/',
     'domain' => null,
-    'secure' => false,
+    'secure' => env('SESSION_SECURE_COOKIE'),
     'http_only' => true,
     'same_site' => 'lax',
 ];

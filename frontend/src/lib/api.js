@@ -1,20 +1,32 @@
 import axios from 'axios';
 
-export const api = axios.create({ baseURL: '/api', timeout: 25000, headers: { Accept: 'application/json' } });
-let token = null;
+export const api = axios.create({
+  baseURL: '/api', timeout: 25000, withCredentials: true, withXSRFToken: true,
+  headers: { Accept: 'application/json' },
+});
 let expired = null;
+let csrfRequest = null;
 
-export function setToken(value) { token = value; }
 export function onSessionExpired(fn) { expired = fn; }
 
-api.interceptors.request.use(config => {
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
+export function prepareCsrf() {
+  if (!csrfRequest) {
+    csrfRequest = api.get('/auth/csrf-cookie', { skipSessionExpired: true })
+      .finally(() => { csrfRequest = null; });
+  }
+  return csrfRequest;
+}
 
-api.interceptors.response.use(response => response.data, error => {
-  if (error.response?.status === 401 && token) {
-    token = null;
+api.interceptors.response.use(response => response.data, async error => {
+  const config = error.config;
+  if (error.response?.status === 419 && config && !config.csrfRetried && config.url !== '/auth/csrf-cookie') {
+    await prepareCsrf();
+    config.csrfRetried = true;
+    delete config.headers['X-XSRF-TOKEN'];
+    delete config.headers['X-CSRF-TOKEN'];
+    return api.request(config);
+  }
+  if (error.response?.status === 401 && !config?.skipSessionExpired && config?.url !== '/auth/login') {
     expired?.();
   }
   const body = error.response?.data;

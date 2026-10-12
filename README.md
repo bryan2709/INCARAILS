@@ -61,7 +61,7 @@ En un entorno con PHP 8.5/Composer 2, MySQL 8 y Node 22:
 ## 3. Tecnología y organización
 
 - **Backend:** Laravel 13, Eloquent, Passport Personal Access Tokens, Form Requests, JSON Resources, controladores delgados, Services y Jobs.
-- **Frontend:** Vue 3, Vue Router, Pinia, CASL, Axios y CSS responsive. Token solo en memoria; recargar la página exige nuevo login.
+- **Frontend:** Vue 3, Vue Router, Pinia, CASL, Axios y CSS responsive. Autenticación con cookie de sesión `HttpOnly`, cifrada, recuperación del perfil al recargar y protección CSRF.
 - **Datos:** MySQL 8, 22 tablas de dominio, más tablas de infraestructura, Passport y Laravel Queue.
 - **Integración:** un único cliente HTTP `FootballClient`; la API de lectura accede a MySQL, no a football-data.
 - **Infraestructura opcional:** Compose para MySQL, API, worker, scheduler y Vite.
@@ -88,11 +88,12 @@ La administración impide asignar permisos que el actor no tiene y conserva, baj
 
 ## 5. Contratos REST
 
-Todas las rutas bajo `/api`; solo el login es público.
+Todas las rutas bajo `/api`; login y preparación CSRF son públicos. El [flujo de autenticación por cookies](docs/12_autenticacion_cookies.md) describe contratos, validaciones y configuración.
 
 | Método | Ruta | Permiso |
 |---|---|---|
 | POST | `/auth/login` | Público |
+| GET | `/auth/csrf-cookie` | Público; prepara cookies de sesión y CSRF |
 | POST | `/auth/logout` | Autenticado |
 | GET | `/auth/me` | Autenticado |
 | GET | `/competitions` | `football.view` |
@@ -108,7 +109,7 @@ Todas las rutas bajo `/api`; solo el login es público.
 | POST | `/imports/{import_id}/retry` | `football.manage` |
 | GET/POST/PATCH/PUT | `/users`, `/roles`, `/permissions` y sus rutas de detalle/asignación | `administration.manage` |
 
-Respuestas: `success`, `data`, `message`, `meta`, `error`. HTTP 200, 201, 202, 401, 403, 404, 422, 429, 503 según la operación. `GET /imports/{id}` exitoso devuelve HTTP 200 aunque el proceso esté en `failed`. Los fallos HTTP externos conservan en `error_message` el estado HTTP y el campo `message` del proveedor cuando es texto no vacío; el detalle de la ficha lo expone como `data.import.error_message`. Las lecturas ya publicadas siempre se sirven desde MySQL, incluso con proveedor caído. Cuando no hay snapshot y la consulta autorizada depende de un proveedor cuyo último intento falló por indisponibilidad, podrá devolver 503.
+Respuestas: `success`, `data`, `message`, `meta`, `error`. HTTP 200, 201, 202, 401, 403, 404, 419, 422, 429, 503 según la operación. El 419 indica CSRF ausente o caducado. `GET /imports/{id}` exitoso devuelve HTTP 200 aunque el proceso esté en `failed`. Los fallos HTTP externos conservan en `error_message` el estado HTTP y el campo `message` del proveedor cuando es texto no vacío; el detalle de la ficha lo expone como `data.import.error_message`. Las lecturas ya publicadas siempre se sirven desde MySQL, incluso con proveedor caído. Cuando no hay snapshot y la consulta autorizada depende de un proveedor cuyo último intento falló por indisponibilidad, podrá devolver 503.
 
 Los listados `/team` y `/players` exponen entidades publicadas **alguna vez** (`first_published_at`), sin duplicarlas; los detalles agrupan participaciones en snapshots **actualmente activos**.
 
