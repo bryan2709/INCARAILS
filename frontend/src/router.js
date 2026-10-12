@@ -1,0 +1,13 @@
+import {createRouter,createWebHistory} from 'vue-router';
+import {useSession} from './stores/session';
+import Login from './views/Login.vue';
+import Competitions from './views/Competitions.vue';
+import CompetitionDetail from './views/CompetitionDetail.vue';
+import Teams from './views/Teams.vue';
+import TeamDetail from './views/TeamDetail.vue';
+import Players from './views/Players.vue';
+import PlayerDetail from './views/PlayerDetail.vue';
+import Administration from './views/Administration.vue';
+const routes=[{path:'/login',component:Login,meta:{public:true}},{path:'/',redirect:'/competitions'},{path:'/competitions',component:Competitions,meta:{permission:'football.view'}},{path:'/competitions/:id',component:CompetitionDetail,meta:{permission:'football.view'}},{path:'/team',component:Teams,meta:{permission:'football.view'}},{path:'/team/:id',component:TeamDetail,meta:{permission:'football.view'}},{path:'/players',component:Players,meta:{permission:'football.view'}},{path:'/players/:id',component:PlayerDetail,meta:{permission:'football.view'}},{path:'/admin',component:Administration,meta:{permission:'administration.manage'}},{path:'/:pathMatch(.*)*',redirect:'/competitions'}];
+export const router=createRouter({history:createWebHistory(),routes});
+router.beforeEach(to=>{const session=useSession();if(!to.meta.public&&!session.signedIn)return '/login';if(to.meta.public&&session.signedIn)return '/competitions';if(to.meta.permission&&!session.can(to.meta.permission))return '/competitions';});

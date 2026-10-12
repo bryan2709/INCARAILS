@@ -1,0 +1,274 @@
+{
+    "area": {
+        "id": 2247,
+        "name": "Turkey",
+        "code": "TUR",
+        "flag": "https://crests.football-data.org/803.svg"
+    },
+    "id": 610,
+    "name": "Galatasaray SK",
+    "shortName": "Galatasaray",
+    "tla": "GAL",
+    "crest": "https://crests.football-data.org/610.png",
+    "address": "Türk Telekom Arena Stadyumu, Huzur Mahallesi, Şişli İstanbul 34415",
+    "website": "http://www.galatasaray.org",
+    "founded": 1905,
+    "clubColors": "Red / Yellow",
+    "venue": "Türk Telekom Arena",
+    "runningCompetitions": [
+        {
+            "id": 2070,
+            "name": "Süper Lig",
+            "code": "TSL",
+            "type": "LEAGUE",
+            "emblem": null
+        },
+        {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+        }
+    ],
+    "coach": {
+        "id": 30435,
+        "firstName": "Okan",
+        "lastName": "Buruk",
+        "name": "Okan Buruk",
+        "dateOfBirth": "1973-10-19",
+        "nationality": "Turkey",
+        "contract": {
+            "start": null,
+            "until": null
+        }
+    },
+    "squad": [
+        {
+            "id": 30283,
+            "name": "Uğurcan Çakır",
+            "position": "Goalkeeper",
+            "dateOfBirth": "1996-04-05",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 30516,
+            "name": "Günay Güvenç",
+            "position": "Goalkeeper",
+            "dateOfBirth": "1991-07-25",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 171608,
+            "name": "Jankat Yilmaz",
+            "position": "Goalkeeper",
+            "dateOfBirth": "2004-08-16",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 289951,
+            "name": "Arda Yılmaz",
+            "position": "Goalkeeper",
+            "dateOfBirth": "2008-02-13",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 194,
+            "name": "Ismail Jakobs",
+            "position": "Defence",
+            "dateOfBirth": "1999-08-17",
+            "nationality": "Senegal"
+        },
+        {
+            "id": 3733,
+            "name": "Davinson Sánchez",
+            "position": "Defence",
+            "dateOfBirth": "1996-06-12",
+            "nationality": "Colombia"
+        },
+        {
+            "id": 9512,
+            "name": "Kaan Ayhan",
+            "position": "Defence",
+            "dateOfBirth": "1994-11-10",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 16119,
+            "name": "Roland Sallai",
+            "position": "Defence",
+            "dateOfBirth": "1997-05-22",
+            "nationality": "Hungary"
+        },
+        {
+            "id": 29804,
+            "name": "Abdülkerim Bardakcı",
+            "position": "Defence",
+            "dateOfBirth": "1994-09-07",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 113375,
+            "name": "Wilfried Singo",
+            "position": "Defence",
+            "dateOfBirth": "2000-12-25",
+            "nationality": "Ivory Coast"
+        },
+        {
+            "id": 134780,
+            "name": "Kazımcan Karataş",
+            "position": "Defence",
+            "dateOfBirth": "2003-01-16",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 145831,
+            "name": "Evren Eren Elmalı",
+            "position": "Defence",
+            "dateOfBirth": "2000-07-07",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 170415,
+            "name": "El Chadaille Bitshiabu",
+            "position": "Defence",
+            "dateOfBirth": "2005-05-16",
+            "nationality": "France"
+        },
+        {
+            "id": 191211,
+            "name": "Arda Unyay",
+            "position": "Defence",
+            "dateOfBirth": "2007-01-18",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 2260,
+            "name": "Lucas Torreira",
+            "position": "Midfield",
+            "dateOfBirth": "1996-02-11",
+            "nationality": "Uruguay"
+        },
+        {
+            "id": 3182,
+            "name": "Ilkay Gündogan",
+            "position": "Midfield",
+            "dateOfBirth": "1990-10-24",
+            "nationality": "Germany"
+        },
+        {
+            "id": 8097,
+            "name": "Mario Lemina",
+            "position": "Midfield",
+            "dateOfBirth": "1993-09-01",
+            "nationality": "Gabon"
+        },
+        {
+            "id": 140738,
+            "name": "İlhami Siraçhan Nas",
+            "position": "Midfield",
+            "dateOfBirth": "2002-06-20",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 153555,
+            "name": "Chimuanya Ugochukwu",
+            "position": "Midfield",
+            "dateOfBirth": "2004-03-26",
+            "nationality": "France"
+        },
+        {
+            "id": 168955,
+            "name": "Gabriel Sara",
+            "position": "Midfield",
+            "dateOfBirth": "1999-06-26",
+            "nationality": "Brazil"
+        },
+        {
+            "id": 172978,
+            "name": "Eyup Aydin",
+            "position": "Midfield",
+            "dateOfBirth": "2004-08-02",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 205981,
+            "name": "Aleksey Batrakov",
+            "position": "Midfield",
+            "dateOfBirth": "2005-06-09",
+            "nationality": "Russia"
+        },
+        {
+            "id": 277805,
+            "name": "Renato Nhaga",
+            "position": "Midfield",
+            "dateOfBirth": "2007-03-27",
+            "nationality": "Guinea-Bissau"
+        },
+        {
+            "id": 3184,
+            "name": "Leroy Sané",
+            "position": "Offence",
+            "dateOfBirth": "1996-01-11",
+            "nationality": "Germany"
+        },
+        {
+            "id": 9434,
+            "name": "Victor Osimhen",
+            "position": "Offence",
+            "dateOfBirth": "1998-12-29",
+            "nationality": "Nigeria"
+        },
+        {
+            "id": 15892,
+            "name": "Rafael Leão",
+            "position": "Offence",
+            "dateOfBirth": "1999-06-10",
+            "nationality": "Portugal"
+        },
+        {
+            "id": 79906,
+            "name": "Yunus Akgün",
+            "position": "Offence",
+            "dateOfBirth": "2000-07-07",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 172081,
+            "name": "Baris Yilmaz",
+            "position": "Offence",
+            "dateOfBirth": "2000-05-23",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 188466,
+            "name": "Deniz Gul",
+            "position": "Offence",
+            "dateOfBirth": "2004-07-02",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 270658,
+            "name": "Berat Luş",
+            "position": "Offence",
+            "dateOfBirth": "2007-04-20",
+            "nationality": "Turkey"
+        },
+        {
+            "id": 289922,
+            "name": "Can Güner",
+            "position": "Offence",
+            "dateOfBirth": "2008-01-07",
+            "nationality": "Argentina"
+        },
+        {
+            "id": 290541,
+            "name": "Ada Yüzgeç",
+            "position": "Offence",
+            "dateOfBirth": "2009-04-03",
+            "nationality": "Turkey"
+        }
+    ],
+    "staff": [],
+    "lastUpdated": "2026-02-25T08:38:42Z"
+}

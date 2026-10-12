@@ -1,0 +1,296 @@
+erDiagram
+    areas {
+        int id PK
+        int external_id UK
+        string name
+        int parent_external_id "nullable"
+    }
+    cache {
+        string key PK
+        mediumtext value
+        int expiration
+    }
+    cache_locks {
+        string key PK
+        string owner
+        int expiration
+    }
+    competition_seasons {
+        int id PK
+        int competition_id FK
+        int external_id
+        date start_date "nullable"
+        date end_date "nullable"
+    }
+    competition_snapshots {
+        int id PK
+        int competition_id FK
+        int season_id FK
+        int import_id FK,UK
+        string build_status
+        timestamp published_at "nullable"
+        timestamp retired_at "nullable"
+        json quality_summary "nullable"
+    }
+    competitions {
+        int id PK
+        int external_id UK
+        int area_id FK "nullable"
+        string name
+        int current_season_id FK "nullable"
+        int active_snapshot_id FK "nullable"
+        timestamp source_updated_at "nullable"
+        timestamp catalog_fetched_at "nullable"
+    }
+    external_credentials {
+        int id PK
+        string alias UK
+        string secret_reference UK
+        int quota_pool_id FK
+        boolean is_enabled
+        timestamp paused_until "nullable"
+    }
+    external_quota_pools {
+        int id PK
+        string name UK
+        int max_requests
+        int window_seconds
+        timestamp cooldown_until "nullable"
+    }
+    external_quota_reservations {
+        int id PK
+        int task_id FK
+        int attempt_id FK,UK
+        int worker_id FK
+        int quota_pool_id FK
+        timestamp reserved_at
+        string reservation_status
+    }
+    external_task_attempts {
+        int id PK
+        int task_id FK
+        int attempt_number
+        int worker_id FK
+        int credential_id FK
+        timestamp started_at
+        timestamp sent_at "nullable"
+        timestamp finished_at "nullable"
+        int http_status "nullable"
+        string result_status
+    }
+    external_tasks {
+        int id PK
+        int import_step_id FK
+        string request_key
+        string resource
+        string status
+        int assigned_worker_id FK "nullable"
+        int lease_version
+        timestamp lease_until "nullable"
+        timestamp not_before "nullable"
+        int retry_of_task_id FK "nullable"
+        json response_json "nullable"
+    }
+    external_worker_configs {
+        int id PK
+        string worker_key UK
+        int credential_id FK,UK
+        int max_requests
+        int window_seconds
+    }
+    external_worker_runtime {
+        int id PK
+        int worker_id FK,UK
+        string instance_id "nullable"
+        timestamp last_heartbeat_at "nullable"
+        timestamp instance_lease_until "nullable"
+    }
+    failed_jobs {
+        int id PK
+        string uuid UK
+        text queue
+        longtext payload
+        timestamp failed_at
+    }
+    import_steps {
+        int id PK
+        int import_id FK
+        string step_key
+        string status
+    }
+    imports {
+        int id PK
+        int competition_id FK "nullable"
+        int season_id FK "nullable"
+        string type
+        string status
+        int requested_by FK "nullable"
+        int retry_of_import_id FK "nullable"
+        string active_scope_key UK "nullable"
+        string error_code "nullable"
+        json quality_summary "nullable"
+        int team_id FK "nullable"
+        int player_id FK "nullable"
+    }
+    job_batches {
+        string id PK
+        int total_jobs
+        int pending_jobs
+        int failed_jobs
+    }
+    jobs {
+        int id PK
+        string queue
+        longtext payload
+        int attempts
+        int reserved_at "nullable"
+        int available_at
+    }
+    migrations {
+        int id PK
+        string migration
+        int batch
+    }
+    oauth_access_tokens {
+        string id PK
+        int user_id "nullable"
+        string client_id
+        boolean revoked
+        datetime expires_at "nullable"
+    }
+    oauth_auth_codes {
+        string id PK
+        int user_id
+        string client_id
+        datetime expires_at "nullable"
+    }
+    oauth_clients {
+        string id PK
+        string owner_type "nullable"
+        int owner_id "nullable"
+        text grant_types
+    }
+    oauth_device_codes {
+        string id PK
+        int user_id "nullable"
+        string client_id
+        string user_code UK
+        datetime expires_at "nullable"
+    }
+    oauth_refresh_tokens {
+        string id PK
+        string access_token_id
+        boolean revoked
+        datetime expires_at "nullable"
+    }
+    password_reset_tokens {
+        string email PK
+        string token
+        timestamp created_at "nullable"
+    }
+    permissions {
+        int id PK
+        string code UK
+        boolean is_system
+    }
+    players {
+        int id PK
+        int external_id UK
+        string name
+        timestamp first_published_at "nullable"
+        json source_profile "nullable"
+        timestamp source_fetched_at "nullable"
+    }
+    role_permission {
+        int role_id PK,FK
+        int permission_id PK,FK
+    }
+    roles {
+        int id PK
+        string code UK
+        boolean is_active
+    }
+    sessions {
+        string id PK
+        int user_id "nullable"
+        int last_activity
+    }
+    snapshot_players {
+        int id PK
+        int snapshot_team_id FK
+        int player_id FK
+        string position "nullable"
+        int shirt_number "nullable"
+    }
+    snapshot_teams {
+        int id PK
+        int snapshot_id FK
+        int team_id FK
+        string name
+        json metadata "nullable"
+    }
+    teams {
+        int id PK
+        int external_id UK
+        int area_id FK "nullable"
+        string name
+        timestamp first_published_at "nullable"
+        json source_profile "nullable"
+        timestamp source_fetched_at "nullable"
+    }
+    user_role {
+        int user_id PK,FK
+        int role_id PK,FK
+    }
+    users {
+        int id PK
+        string email UK
+        boolean is_active
+    }
+    competitions ||--o{ competition_seasons : "competition_id"
+    competitions ||--o{ competition_snapshots : "competition_id"
+    imports ||--o| competition_snapshots : "import_id"
+    competition_seasons ||--o{ competition_snapshots : "season_id"
+    competition_snapshots o|--o{ competitions : "active_snapshot_id"
+    areas o|--o{ competitions : "area_id"
+    competition_seasons o|--o{ competitions : "current_season_id"
+    external_quota_pools ||--o{ external_credentials : "quota_pool_id"
+    external_task_attempts ||--o| external_quota_reservations : "attempt_id"
+    external_quota_pools ||--o{ external_quota_reservations : "quota_pool_id"
+    external_tasks ||--o{ external_quota_reservations : "task_id"
+    external_worker_configs ||--o{ external_quota_reservations : "worker_id"
+    external_credentials ||--o{ external_task_attempts : "credential_id"
+    external_tasks ||--o{ external_task_attempts : "task_id"
+    external_worker_configs ||--o{ external_task_attempts : "worker_id"
+    external_worker_configs o|--o{ external_tasks : "assigned_worker_id"
+    import_steps ||--o{ external_tasks : "import_step_id"
+    external_tasks o|--o{ external_tasks : "retry_of_task_id"
+    external_credentials ||--o| external_worker_configs : "credential_id"
+    external_worker_configs ||--o| external_worker_runtime : "worker_id"
+    imports ||--o{ import_steps : "import_id"
+    competitions o|--o{ imports : "competition_id"
+    players o|--o{ imports : "player_id"
+    users o|--o{ imports : "requested_by"
+    imports o|--o{ imports : "retry_of_import_id"
+    competition_seasons o|--o{ imports : "season_id"
+    teams o|--o{ imports : "team_id"
+    permissions ||--o{ role_permission : "permission_id"
+    roles ||--o{ role_permission : "role_id"
+    players ||--o{ snapshot_players : "player_id"
+    snapshot_teams ||--o{ snapshot_players : "snapshot_team_id"
+    competition_snapshots ||--o{ snapshot_teams : "snapshot_id"
+    teams ||--o{ snapshot_teams : "team_id"
+    areas o|--o{ teams : "area_id"
+    roles ||--o{ user_role : "role_id"
+    users ||--o{ user_role : "user_id"
+    users o|..o{ sessions : "user_id sin FK"
+    users o|..o{ oauth_access_tokens : "user_id sin FK"
+    users o|..o{ oauth_auth_codes : "user_id sin FK"
+    users o|..o{ oauth_device_codes : "user_id sin FK"
+    oauth_clients o|..o{ oauth_access_tokens : "client_id sin FK"
+    oauth_clients o|..o{ oauth_auth_codes : "client_id sin FK"
+    oauth_clients o|..o{ oauth_device_codes : "client_id sin FK"
+    oauth_access_tokens o|..o{ oauth_refresh_tokens : "access_token_id sin FK"
+    users o|..o{ password_reset_tokens : "email sin FK"
+    external_tasks o|..o{ jobs : "taskId en payload sin FK"
+    external_tasks o|..o{ failed_jobs : "taskId en payload sin FK"

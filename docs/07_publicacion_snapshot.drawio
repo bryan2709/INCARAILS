@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" modified="2026-10-11T00:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="07_publicacion_snapshot" name="Publicación y retención de snapshots">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="old" value="Snapshot publicado actual&#10;lecturas MySQL HTTP 200" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="105.2" y="216.0" width="280.0" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="new" value="Nueva versión staging&#10;importación y temporada" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="464.0" y="60.0" width="274.2" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="check" value="Validación completa +&#10;temporada todavía vigente" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFF0DD;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="457.4" y="216.0" width="287.3" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="reject" value="FAILED&#10;no alterar versión publicada" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBECE8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="477.8" y="385.2" width="296.0" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="atomic" value="Transacción corta&#10;marcar publicado y cambiar puntero" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="385.2" width="370.4" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="serving" value="Nuevo snapshot activo&#10;lecturas consistentes" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="93.5" y="541.3" width="247.9" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="retire" value="Anterior retirado&#10;retener 24 horas" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="388.8" y="541.3" width="196.9" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="clean" value="Limpieza segura&#10;sin referencias activas" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="365.5" y="697.3" width="243.5" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="old" target="atomic">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="245.2" y="311.7"/>
+              <mxPoint x="245.2" y="347.1"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_1" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="new" target="check">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="601.0" y="152.2"/>
+              <mxPoint x="601.0" y="181.5"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="check" target="reject">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="609.9" y="311.8"/>
+              <mxPoint x="615.2" y="347.4"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="check" target="atomic">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470.3" y="313.6"/>
+              <mxPoint x="387.4" y="352.3"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="atomic" target="serving">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="235.1" y="477.5"/>
+              <mxPoint x="229.8" y="506.8"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="atomic" target="retire">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="335.7" y="478.9"/>
+              <mxPoint x="385.9" y="510.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="retire" target="clean">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="487.3" y="633.5"/>
+              <mxPoint x="487.3" y="662.8"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

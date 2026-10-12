@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" modified="2026-10-11T00:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="03_modelo_acl" name="Modelo ACL">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="users" value="users&#10;id · email · password&#10;is_active" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="66.6" y="60.0" width="229.0" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="ur" value="user_role&#10;user_id · role_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="87.7" y="233.5" width="186.7" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="roles" value="roles&#10;id · code · is_active" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="73.1" y="388.1" width="215.8" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="rp" value="role_permission&#10;role_id · permission_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="542.7" width="242.1" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="perm" value="permissions&#10;id · code · is_system&#10;is_active" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="68.0" y="697.3" width="226.0" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="users" target="ur">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="181.0" y="172.1"/>
+              <mxPoint x="181.0" y="200.2"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_1" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="ur" target="roles">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="181.0" y="325.5"/>
+              <mxPoint x="181.0" y="354.1"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="roles" target="rp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="181.0" y="480.0"/>
+              <mxPoint x="181.0" y="508.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="rp" target="perm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="181.0" y="634.3"/>
+              <mxPoint x="181.0" y="662.3"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" modified="2026-10-11T00:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="01_arquitectura" name="Arquitectura general">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="spa" value="Vue 3 SPA&#10;Vue Router · Pinia · CASL" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="182.5" y="60.0" width="265.4" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="api" value="Laravel 13 / PHP 8.5&#10;Controllers · Requests · Resources" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="143.1" y="214.6" width="344.2" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="passport" value="Passport + ACL&#10;3 permisos" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="369.2" width="183.8" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="mysql" value="MySQL 8&#10;Datos y snapshots publicados" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="161.4" y="832.9" width="307.7" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="imports" value="Coordinador de importación&#10;Catálogo · refresh · retry" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFF0DD;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="387.4" y="369.2" width="296.0" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="queue" value="Laravel DB Queue&#10;Tareas y leases" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="431.1" y="523.7" width="208.5" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="workers" value="Workers lógicos&#10;credenciales autorizadas" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="402.0" y="678.3" width="266.9" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="quota" value="Cuota compartida&#10;10 req/min + límite worker" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFF0DD;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="515.7" y="832.9" width="284.4" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="provider" value="football-data.org v4" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBECE8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="547.1" y="987.5" width="221.7" height="52.5" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="spa" target="api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="315.2" y="151.9"/>
+              <mxPoint x="315.2" y="180.5"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_1" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="api" target="passport">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="254.4" y="307.5"/>
+              <mxPoint x="221.9" y="337.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="api" target="mysql">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="315.2" y="389.4"/>
+              <mxPoint x="315.2" y="705.9"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="api" target="imports">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="397.9" y="308.0"/>
+              <mxPoint x="442.9" y="339.0"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="imports" target="queue">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="535.4" y="461.1"/>
+              <mxPoint x="535.4" y="489.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="queue" target="workers">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="535.4" y="615.7"/>
+              <mxPoint x="535.4" y="644.3"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="workers" target="mysql">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="452.8" y="771.7"/>
+              <mxPoint x="407.7" y="802.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="workers" target="quota">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580.8" y="771.0"/>
+              <mxPoint x="605.0" y="800.9"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_8" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="quota" target="provider">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="657.9" y="925.4"/>
+              <mxPoint x="657.9" y="954.2"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" modified="2026-10-11T00:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="05_modelo_workers" name="Modelo importaciones y workers">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="imports" value="imports&#10;competition_id · type&#10;status · retry_of_import_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="60.0" width="278.5" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="steps" value="import_steps&#10;import_id · step_key" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="86.2" y="233.5" width="226.0" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="tasks" value="external_tasks&#10;step_id · request_key&#10;lease_version · lease_until" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60.7" y="388.1" width="277.1" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="attempts" value="external_task_attempts&#10;task_id · worker_id&#10;credential_id · http_status" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="68.0" y="561.7" width="274.2" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="worker" value="external_worker_configs&#10;worker_key · credential_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="386.7" y="397.6" width="278.5" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="runtime" value="external_worker_runtime&#10;worker_id · heartbeat · lease" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="388.9" y="571.1" width="300.4" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="cred" value="external_credentials&#10;secret_reference · quota_pool_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFF0DD;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="359.0" y="233.5" width="334.0" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="pools" value="external_quota_pools&#10;max_requests · window_seconds" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFF0DD;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="491.7" y="69.5" width="334.0" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="reserve" value="external_quota_reservations&#10;task_id · attempt_id&#10;worker_id · pool_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="334.2" y="735.2" width="296.0" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="imports" target="steps">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="199.3" y="172.1"/>
+              <mxPoint x="199.3" y="200.2"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_1" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="steps" target="tasks">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="199.3" y="325.1"/>
+              <mxPoint x="199.3" y="353.1"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="tasks" target="attempts">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="201.5" y="499.8"/>
+              <mxPoint x="202.5" y="527.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="attempts" target="reserve">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314.2" y="674.8"/>
+              <mxPoint x="363.3" y="705.0"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="worker" target="attempts">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="414.7" y="493.2"/>
+              <mxPoint x="348.5" y="528.4"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="worker" target="runtime">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530.6" y="494.4"/>
+              <mxPoint x="533.5" y="531.8"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="cred" target="worker">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="525.9" y="328.1"/>
+              <mxPoint x="525.9" y="361.0"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="pools" target="cred">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610.3" y="164.6"/>
+              <mxPoint x="582.2" y="198.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_8" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="pools" target="reserve">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="691.6" y="177.9"/>
+              <mxPoint x="717.0" y="233.5"/>
+              <mxPoint x="717.0" y="233.5"/>
+              <mxPoint x="717.0" y="233.5"/>
+              <mxPoint x="717.0" y="303.5"/>
+              <mxPoint x="717.0" y="303.5"/>
+              <mxPoint x="717.0" y="303.5"/>
+              <mxPoint x="712.6" y="650.6"/>
+              <mxPoint x="712.6" y="650.6"/>
+              <mxPoint x="712.6" y="650.6"/>
+              <mxPoint x="634.2" y="694.0"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

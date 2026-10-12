@@ -1,0 +1,218 @@
+{
+    "area": {
+        "id": 2072,
+        "name": "England",
+        "code": "ENG",
+        "flag": "https://crests.football-data.org/770.svg"
+    },
+    "id": 59,
+    "name": "Blackburn Rovers FC",
+    "shortName": "Blackburn",
+    "tla": "BLA",
+    "crest": "https://crests.football-data.org/59.png",
+    "address": "Ewood Park Blackburn BB2 4JF",
+    "website": "http://www.rovers.co.uk",
+    "founded": 1874,
+    "clubColors": "Blue / White",
+    "venue": "Ewood Park",
+    "runningCompetitions": [
+        {
+            "id": 2016,
+            "name": "Championship",
+            "code": "ELC",
+            "type": "LEAGUE",
+            "emblem": "https://crests.football-data.org/ELC.png"
+        },
+        {
+            "id": 2139,
+            "name": "Football League Cup",
+            "code": "FLC",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/carabao.png"
+        }
+    ],
+    "coach": {
+        "id": 14572,
+        "firstName": "Tony",
+        "lastName": "Mowbray",
+        "name": "Tony Mowbray",
+        "dateOfBirth": "1963-11-22",
+        "nationality": "England",
+        "contract": {
+            "start": null,
+            "until": null
+        }
+    },
+    "squad": [
+        {
+            "id": 4204,
+            "name": "Aynsley Pears",
+            "position": "Goalkeeper",
+            "dateOfBirth": "1998-04-23",
+            "nationality": "England"
+        },
+        {
+            "id": 63304,
+            "name": "Balázs Tóth",
+            "position": "Goalkeeper",
+            "dateOfBirth": "1997-09-04",
+            "nationality": "Hungary"
+        },
+        {
+            "id": 5739,
+            "name": "Harry Pickering",
+            "position": "Defence",
+            "dateOfBirth": "1998-12-29",
+            "nationality": "England"
+        },
+        {
+            "id": 5842,
+            "name": "Scott Wharton",
+            "position": "Defence",
+            "dateOfBirth": "1997-10-03",
+            "nationality": "England"
+        },
+        {
+            "id": 36914,
+            "name": "Sean McLoughlin",
+            "position": "Defence",
+            "dateOfBirth": "1996-11-13",
+            "nationality": "Ireland"
+        },
+        {
+            "id": 45447,
+            "name": "Yuri Ribeiro",
+            "position": "Defence",
+            "dateOfBirth": "1997-01-24",
+            "nationality": "Portugal"
+        },
+        {
+            "id": 76249,
+            "name": "Lewis Miller",
+            "position": "Defence",
+            "dateOfBirth": "2000-08-24",
+            "nationality": "Australia"
+        },
+        {
+            "id": 141765,
+            "name": "Hayden Carter",
+            "position": "Defence",
+            "dateOfBirth": "1999-12-17",
+            "nationality": "England"
+        },
+        {
+            "id": 177177,
+            "name": "Ryan Alebiosu",
+            "position": "Defence",
+            "dateOfBirth": "2001-12-17",
+            "nationality": "Nigeria"
+        },
+        {
+            "id": 218489,
+            "name": "Tom Atcheson",
+            "position": "Defence",
+            "dateOfBirth": "2006-09-22",
+            "nationality": "Northern Ireland"
+        },
+        {
+            "id": 264319,
+            "name": "Gady Beyuku",
+            "position": "Defence",
+            "dateOfBirth": "2005-01-01",
+            "nationality": "France"
+        },
+        {
+            "id": 3765,
+            "name": "Sam Morsy",
+            "position": "Midfield",
+            "dateOfBirth": "1991-09-10",
+            "nationality": "Egypt"
+        },
+        {
+            "id": 4160,
+            "name": "Adam Forshaw",
+            "position": "Midfield",
+            "dateOfBirth": "1991-10-08",
+            "nationality": "England"
+        },
+        {
+            "id": 11601,
+            "name": "Todd Cantwell",
+            "position": "Midfield",
+            "dateOfBirth": "1998-02-27",
+            "nationality": "England"
+        },
+        {
+            "id": 141910,
+            "name": "Ryoya Morishita",
+            "position": "Midfield",
+            "dateOfBirth": "1997-04-11",
+            "nationality": "Japan"
+        },
+        {
+            "id": 170820,
+            "name": "Dion De Neve",
+            "position": "Midfield",
+            "dateOfBirth": "2001-06-12",
+            "nationality": "Belgium"
+        },
+        {
+            "id": 171510,
+            "name": "Jake Garrett",
+            "position": "Midfield",
+            "dateOfBirth": "2003-03-10",
+            "nationality": "England"
+        },
+        {
+            "id": 190959,
+            "name": "Kristi Montgomery",
+            "position": "Midfield",
+            "dateOfBirth": "2004-05-31",
+            "nationality": "Scotland"
+        },
+        {
+            "id": 8226,
+            "name": "Oladapo Afolayan",
+            "position": "Offence",
+            "dateOfBirth": "1998-02-12",
+            "nationality": "England"
+        },
+        {
+            "id": 24319,
+            "name": "Mathias Jørgensen",
+            "position": "Offence",
+            "dateOfBirth": "2000-09-20",
+            "nationality": "Denmark"
+        },
+        {
+            "id": 99708,
+            "name": "Yuki Ohashi",
+            "position": "Offence",
+            "dateOfBirth": "1996-07-27",
+            "nationality": "Japan"
+        },
+        {
+            "id": 102314,
+            "name": "Augustus Kargbo",
+            "position": "Offence",
+            "dateOfBirth": "1999-08-24",
+            "nationality": "Sierra Leone"
+        },
+        {
+            "id": 190556,
+            "name": "Jayden Fevrier",
+            "position": "Offence",
+            "dateOfBirth": "2003-04-14",
+            "nationality": "England"
+        },
+        {
+            "id": 202863,
+            "name": "Andri Guðjohnsen",
+            "position": "Offence",
+            "dateOfBirth": "2002-01-29",
+            "nationality": "Iceland"
+        }
+    ],
+    "staff": [],
+    "lastUpdated": "2022-02-19T08:50:27Z"
+}

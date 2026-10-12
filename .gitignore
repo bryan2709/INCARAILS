@@ -1,0 +1,14 @@
+**/.env
+**/vendor/
+**/node_modules/
+**/.phpunit.cache/
+**/.pint.cache
+**/dist/
+**/.DS_Store
+backend/storage/logs/*.log
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/bootstrap/cache/*.php
+backend/database/database.sqlite
+backend/storage/oauth-*.key

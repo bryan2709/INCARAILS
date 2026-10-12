@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" modified="2026-10-11T00:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="04_modelo_futbol" name="Modelo fútbol y snapshots">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="areas" value="areas&#10;id · external_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="368.4" y="60.0" width="177.9" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="comps" value="competitions&#10;external_id · current_season_id&#10;active_snapshot_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E0F1F8;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="183.2" y="214.6" width="317.9" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="season" value="competition_seasons&#10;competition_id · external_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="70.2" y="388.2" width="290.2" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="snap" value="competition_snapshots&#10;competition_id · season_id&#10;quality_summary" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="120.5" y="542.7" width="280.0" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="st" value="snapshot_teams&#10;snapshot_id · team_id" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="140.9" y="716.3" width="239.2" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="teams" value="teams&#10;external_id · first_published_at" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="415.8" y="880.4" width="313.5" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="sp" value="snapshot_players&#10;snapshot_team_id · player_id&#10;position · shirt_number" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E9F6F1;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="65.1" y="870.9" width="303.3" height="89.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="players" value="players&#10;external_id · first_published_at" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F2F7FA;strokeColor=#B6C9D4;fontColor=#16354D;fontSize=13;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60.0" y="1044.4" width="313.5" height="70.0" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="areas" target="comps">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="417.6" y="152.2"/>
+              <mxPoint x="396.9" y="181.1"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_1" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="areas" target="teams">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="496.6" y="165.5"/>
+              <mxPoint x="524.5" y="214.6"/>
+              <mxPoint x="524.5" y="214.6"/>
+              <mxPoint x="524.5" y="214.6"/>
+              <mxPoint x="572.6" y="421.7"/>
+              <mxPoint x="572.6" y="421.7"/>
+              <mxPoint x="572.6" y="421.7"/>
+              <mxPoint x="572.6" y="421.7"/>
+              <mxPoint x="572.6" y="588.7"/>
+              <mxPoint x="572.6" y="588.7"/>
+              <mxPoint x="572.6" y="781.2"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_2" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="comps" target="season">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="289.6" y="327.3"/>
+              <mxPoint x="266.7" y="356.4"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_3" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="comps" target="snap">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="367.9" y="340.8"/>
+              <mxPoint x="383.0" y="388.2"/>
+              <mxPoint x="383.0" y="388.2"/>
+              <mxPoint x="383.0" y="388.2"/>
+              <mxPoint x="383.0" y="458.2"/>
+              <mxPoint x="383.0" y="458.2"/>
+              <mxPoint x="383.0" y="458.2"/>
+              <mxPoint x="343.4" y="499.5"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_4" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="season" target="snap">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230.8" y="479.7"/>
+              <mxPoint x="238.6" y="507.7"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_5" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="snap" target="st">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260.5" y="654.8"/>
+              <mxPoint x="260.5" y="683.0"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_6" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="st" target="teams">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="376.1" y="812.4"/>
+              <mxPoint x="446.1" y="848.6"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_7" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="st" target="sp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="245.6" y="807.8"/>
+              <mxPoint x="238.0" y="835.9"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_8" value="" style="endArrow=block;endFill=1;html=0;strokeWidth=1.7;strokeColor=#55788A;rounded=0;edgeStyle=none;" edge="1" parent="1" source="sp" target="players">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="216.8" y="982.9"/>
+              <mxPoint x="216.8" y="1011.1"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

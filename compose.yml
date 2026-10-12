@@ -1,0 +1,60 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: incarail
+      MYSQL_USER: incarail
+      MYSQL_PASSWORD: change_me_local
+      MYSQL_ROOT_PASSWORD: change_root_local
+    ports: ["3307:3306"]
+    volumes: [mysql_data:/var/lib/mysql]
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -pchange_root_local --silent"]
+      interval: 5s
+      retries: 25
+  api:
+    build: ./backend
+    volumes: ["./backend:/app", "php_vendor:/app/vendor", "./backend/docker/php-dev.ini:/usr/local/etc/php/conf.d/99-local-dev.ini:ro"]
+    ports: ["8000:8000"]
+    depends_on: {db: {condition: service_healthy}}
+    command: sh -c "composer install --no-interaction && php artisan serve --host=0.0.0.0 --port=8000"
+  worker-a:
+    restart: unless-stopped
+    build: ./backend
+    environment: {EXTERNAL_WORKER_KEY: worker-a}
+    volumes: ["./backend:/app", "php_vendor:/app/vendor"]
+    depends_on: {db: {condition: service_healthy}}
+    command: sh -c "while [ ! -f vendor/autoload.php ]; do sleep 2; done; php artisan queue:work database --queue=football --sleep=2 --timeout=35 --tries=0"
+  worker-b:
+    restart: unless-stopped
+    profiles: [multi]
+    build: ./backend
+    environment: {EXTERNAL_WORKER_KEY: worker-b}
+    volumes: ["./backend:/app", "php_vendor:/app/vendor"]
+    depends_on: {db: {condition: service_healthy}}
+    command: sh -c "while [ ! -f vendor/autoload.php ]; do sleep 2; done; php artisan queue:work database --queue=football --sleep=2 --timeout=35 --tries=0"
+  worker-c:
+    restart: unless-stopped
+    profiles: [multi]
+    build: ./backend
+    environment: {EXTERNAL_WORKER_KEY: worker-c}
+    volumes: ["./backend:/app", "php_vendor:/app/vendor"]
+    depends_on: {db: {condition: service_healthy}}
+    command: sh -c "while [ ! -f vendor/autoload.php ]; do sleep 2; done; php artisan queue:work database --queue=football --sleep=2 --timeout=35 --tries=0"
+  scheduler:
+    restart: unless-stopped
+    build: ./backend
+    volumes: ["./backend:/app", "php_vendor:/app/vendor"]
+    depends_on: {db: {condition: service_healthy}}
+    command: sh -c "while [ ! -f vendor/autoload.php ]; do sleep 2; done; while true; do php artisan football:wake --quiet; sleep 30; done"
+  web:
+    image: node:22-alpine
+    environment: {VITE_API_PROXY_TARGET: "http://api:8000", VITE_USE_POLLING: "true"}
+    working_dir: /app
+    volumes: ["./frontend:/app"]
+    ports: ["5173:5173"]
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    depends_on: [api]
+volumes:
+  mysql_data:
+  php_vendor:

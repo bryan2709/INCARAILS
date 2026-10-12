@@ -1,0 +1,3 @@
+Los casos de prueba representan la estructura de Championship observada en las respuestas sanitizadas de Postman (24 equipos, 677 jugadores en la muestra), pero reducen el tamaño del fixture para que las pruebas sean deterministas. Los tokens y respuestas privadas no forman parte del repositorio.
+
+`galatasaray-team.json` conserva la trama pública suministrada del equipo 610 con sus 32 jugadores. Verifica el refresco individual y la separación entre la plantilla actual y una participación de Champions League vacía; no contiene credenciales. Las pruebas de renderizado Vue usan la misma trama en `frontend/tests/fixtures/galatasaray-team.json`.
